@@ -15,7 +15,7 @@ exports.post = async (req, res) => {
       })),
     });
     await product.save();
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       productData: product,
     });

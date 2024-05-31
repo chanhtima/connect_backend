@@ -27,7 +27,7 @@ exports.postNews = async (req, res) => {
       NE_image: images,
     });
     await newsCreate.save();
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       NewsData: newsCreate,
     });
