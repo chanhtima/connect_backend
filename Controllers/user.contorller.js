@@ -76,7 +76,6 @@ exports.deleteUserHandler = async (req, res) => {
       .json({ error: "Internal Server Error", message: error.message });
   }
 };
-
 exports.updatedUser = async (req, res) => {
     const { fname, lname, username, avater } = req.body;
     try {
