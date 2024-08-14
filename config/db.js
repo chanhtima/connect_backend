@@ -1,10 +1,20 @@
-const mongoose = require("mongoose");
-const connectDB = async() => {
-    try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/connect_DB');
-        console.log("Database connected:");
-    } catch (error) {
-        console.log(error);
-    }
-};
-module.exports = connectDB;
+const pgp = require('pg-promise')();
+require('dotenv').config();
+
+const db = pgp({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+});
+
+db.connect()
+    .then(() => {
+        console.log("Database connected successfully");
+    })
+    .catch(error => {
+        console.error("Database connection error:", error.message);
+    });
+
+module.exports = db;
